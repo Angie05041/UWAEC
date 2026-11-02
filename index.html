@@ -1,0 +1,334 @@
+<!doctype html> <!--le dice a el navegador que esto es una pagina web moderna, siempre va de primeras-->
+<html lang="es"> <!--abrimos toda la pagina y le avisamos que esta en español, asi el traductor de chrome no la quiere traducir-->
+
+<!-- =====================================================================
+     PAGINA WEB UWA EC
+     Proyecto final: el rediseño de la pagina de la empresa de mi hermano.
+     Partes: header + 5 secciones + footer (el profe pide minimo 4 secciones).
+     Idea del diseño: "bitacora de campo", como un cuaderno de los que usan en el campo:
+     curvas de nivel de un mapa que se dibujan solas, hojas de plano y olas entre secciones.
+     ===================================================================== -->
+
+<head> <!--la cabeza, todo lo que va aqui NO se ve, es como la configuracion de la pagina-->
+  <meta charset="utf-8"> <!--para que se vean bien las tildes y la ñ, si no sale "IngenierÃ­a" y cosas raras-->
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <!--MUY importante para el celular: la pagina se acomoda a el ancho de la pantalla, si no el celular la muestra chiquitica como de computador-->
+  <title>Uwa Ec | Ingeniería sostenible</title> <!--el nombre que sale en la pestañita del navegador-->
+  <meta name="description" content="Uwa Consultores SAS: consultoría en sostenibilidad para la agroindustria (ISCC, RSPO, GEI, uso del suelo y biodiversidad)."> <!--la descripcion que muestra google cuando buscan la pagina, no se ve en la pagina-->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"> <!--rendimiento: se conecta con google de una vez para que las letras carguen mas rapido-->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!--lo mismo pero con el lugar donde google guarda los archivos de las letras-->
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet"> <!--las 2 letras de google fonts: Bricolage Grotesque para titulos y Public Sans para textos. los numeros (400, 500...) son los grosores que vamos a usar-->
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"> <!--traemos los estilos de boots 5.3 desde internet: columnas, menu y formularios ya hechos-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet"> <!--los iconos de boots, se usan asi: <i class="bi bi-nombre"></i>, los nombres se buscan en icons.getbootstrap.com-->
+  <link href="css/estilos.css" rel="stylesheet"> <!--mis estilos, acordemonos que van DESPUES de boots, porque lo ultimo que lee el navegador es lo que gana, asi yo puedo cambiar lo de boots-->
+</head> <!--y aqui terminamos la configuracion-->
+
+<body> <!--el cuerpo, todo lo que va aqui SI se ve-->
+
+  <!-- =====================================================================
+       HEADER: logo + menu + boton de contacto
+       ===================================================================== -->
+  <header> <!--la parte de arriba de la pagina, el encabezado-->
+    <nav id="menu" class="navbar navbar-expand-lg fixed-top"> <!--nav es la etiqueta para menus. id="menu" su nombre unico. navbar es de boots. navbar-expand-lg: en computador se ve completo y en celular sale la hamburguesa. fixed-top: se queda pegadito arriba-->
+      <div class="container"> <!--container de boots: centra el contenido y deja margen a los lados-->
+        <a class="navbar-brand" href="#inicio"> <!--navbar-brand es el lugar del logo en boots, y href="#inicio" nos devuelve a el inicio-->
+          <img src="img/logo.png" alt="Uwa Ec, ingeniería sostenible" height="38"> <!--el logo: src donde esta, alt el texto si no carga, height el alto-->
+        </a> <!--cierro el enlace del logo-->
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#enlaces" aria-controls="enlaces" aria-expanded="false" aria-label="Abrir menú"> <!--la hamburguesa, solo sale en celular. data-bs-toggle="collapse" le dice a boots que abre y cierra algo, data-bs-target="#enlaces" dice que abre. los aria- son para el lector de pantalla-->
+          <i class="bi bi-list"></i> <!--el icono de las 3 rayitas-->
+        </button> <!--cierro el boton de la hamburguesa-->
+
+        <div class="collapse navbar-collapse" id="enlaces"> <!--la caja de los enlaces, collapse y navbar-collapse son de boots para que se esconda en celular-->
+          <ul class="navbar-nav mx-auto"> <!--ul es la lista, navbar-nav es de boots, mx-auto centra los enlaces (m = margin, x = izquierda y derecha)-->
+            <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li> <!--cada li es una opcion, nav-item y nav-link son de boots, el # es para llamar un id-->
+            <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li> <!--baja a la seccion con id="nosotros"-->
+            <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li> <!--baja a la seccion con id="servicios"-->
+            <li class="nav-item"><a class="nav-link" href="#pruebalo">Pruébalo</a></li> <!--baja a la seccion con id="pruebalo"-->
+            <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li> <!--baja a la seccion con id="contacto"-->
+          </ul> <!--cierro la lista del menu-->
+          <a href="#contacto" class="btn btn-uwa">Escríbenos</a> <!--enlace con forma de boton: btn es de boots, btn-uwa es mi estilo verde-->
+        </div> <!--cierro la caja de los enlaces-->
+      </div> <!--cierro el container-->
+    </nav> <!--cierro el menu-->
+  </header> <!--cierro el header-->
+
+
+  <main> <!--el contenido principal de la pagina, aqui van las 5 secciones-->
+
+    <!-- =====================================================================
+         SECCION 1: INICIO
+         curvas de nivel de fondo + titulo grande + la ilustracion en su marco
+         ===================================================================== -->
+    <section id="inicio" class="inicio"> <!--section agrupa un tema, id="inicio" para que el menu la encuentre, class="inicio" para el css-->
+      <div id="curvasHero" class="curvas" aria-hidden="true"></div> <!--caja vacia a proposito: el js trae el dibujo de las curvas y lo mete aqui para animarlo. aria-hidden="true" = el lector de pantalla lo ignora porque es decoracion-->
+      <img src="img/hojas.png" alt="" class="hoja-flotante hoja-1" data-velocidad="0.15" aria-hidden="true"> <!--hojita que flota. alt vacio porque es decoracion. data-velocidad es un dato que me invento, el js lo lee para saber que tan rapido se mueve-->
+      <img src="img/hojas.png" alt="" class="hoja-flotante hoja-2" data-velocidad="-0.1" aria-hidden="true"> <!--otra hojita, con velocidad negativa se mueve para el otro lado-->
+
+      <div class="container"> <!--container de boots para centrar-->
+        <div class="row align-items-center gy-5"> <!--row es una fila de boots. align-items-center: texto e imagen centrados en vertical. gy-5: espacio vertical entre columnas-->
+
+          <div class="col-lg-5"> <!--boots divide todo en 12 partes: en computador el texto ocupa 5, en celular las 12 (todo el ancho)-->
+            <h1 class="titulo-grande"> <!--el titulo principal, acordemonos: solo un h1 por pagina-->
+              <span class="linea">Ingeniería sostenible</span> <!--primera linea del titulo, en un span para animarla aparte-->
+              <span class="linea">para la agroindustria</span> <!--segunda linea, sale despuesito de la primera-->
+            </h1> <!--cierro el titulo-->
+            <p class="intro">Acompañamos a productores de palma y empresas agroindustriales a certificarse en estándares internacionales, cuidando el ambiente y a las comunidades.</p> <!--el parrafo de presentacion-->
+            <div class="d-flex flex-wrap gap-3"> <!--d-flex pone los botones en fila, flex-wrap baja el otro si no cabe, gap-3 el espacio entre ellos-->
+              <a href="#servicios" class="btn btn-uwa btn-lg">Ver servicios</a> <!--boton verde grande (btn-lg = large) que baja a servicios-->
+              <a href="#pruebalo" class="btn btn-linea btn-lg">Hacer la prueba</a> <!--btn-linea es mi estilo: boton solo con el borde verde-->
+            </div> <!--cierro la fila de botones-->
+          </div> <!--cierro la columna del texto-->
+
+          <div class="col-lg-7"> <!--las otras 7 partes para la ilustracion, asi se ve mas grande que el texto (5 + 7 = 12)-->
+            <figure class="hoja-mapa"> <!--figure es la etiqueta para una imagen. hoja-mapa es mi estilo: un marco fino con esquinitas, como las hojas de un plano-->
+              <svg class="sello" viewBox="0 0 120 120" aria-hidden="true"> <!--el sello dorado de la esquina. svg es un dibujo hecho con codigo, viewBox es el tamaño de la "hoja" donde dibujo-->
+                <defs> <!--defs guarda cosas que voy a usar despues pero no las dibuja-->
+                  <path id="circulo" d="M60 60 m-44 0 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0"/> <!--un circulo invisible, el texto va a caminar por encima de el-->
+                </defs> <!--cierro defs-->
+                <circle cx="60" cy="60" r="57"/> <!--el circulo dorado de fondo: cx y cy es el centro, r el radio-->
+                <text><textPath href="#circulo">ingeniería sostenible • certificación • campo •</textPath></text> <!--textPath pone el texto sobre el circulo invisible, por eso queda redondito-->
+                <path class="sello-hoja" d="M60 38 C76 47 77 70 60 82 C43 70 44 47 60 38 Z M60 45 V80"/> <!--la hojita del centro del sello, dibujada con lineas-->
+              </svg> <!--cierro el sello-->
+              <img src="img/ilustracion-portada.png" alt="Plantación de palma con una auditora, un sello de certificación, un mapa satelital y fauna" class="img-fluid"> <!--la ilustracion. img-fluid es de boots: la imagen nunca se sale de su caja-->
+            </figure> <!--cierro el marco-->
+          </div> <!--cierro la columna de la imagen-->
+
+        </div> <!--cierro la fila-->
+      </div> <!--cierro el container-->
+    </section> <!--cierro el inicio-->
+
+
+    <!-- =====================================================================
+         SECCION 2: NOSOTROS
+         izquierda: quienes somos + 3 contadores. derecha: los 3 pilares + el nombre U'wa
+         ===================================================================== -->
+    <section id="nosotros" class="seccion"> <!--seccion es mi clase con el espacio de arriba y abajo-->
+      <img src="img/hojas.png" alt="" class="hoja-flotante hoja-3" data-velocidad="0.12" aria-hidden="true"> <!--otra hojita flotante de decoracion-->
+      <div class="container"> <!--container de boots para centrar-->
+        <div class="row gy-5 gx-lg-5"> <!--gy-5 espacio vertical, gx-lg-5 espacio horizontal SOLO en computador, porque en celular saca la pagina por los lados-->
+
+          <div class="col-lg-6 revelar" data-efecto="izquierda"> <!--la mitad. revelar es mi clase: empieza invisible y aparece al bajar. data-efecto dice que entra desde la izquierda-->
+            <h2 class="titulo-seccion">Sostenibilidad global, desde el campo</h2> <!--h2 porque es titulo de seccion, acordemonos: h1, luego h2, luego h3-->
+            <p>Somos un equipo multidisciplinar de auditores certificados, con experiencia en el sector palmicultor y agroindustrial, en la implementación, mantenimiento y auditoría de estándares internacionales de certificación.</p> <!--primer parrafo: quienes son-->
+            <p>Ingenieros ambientales, agrónomos, biólogos y profesionales en ciencias socioeconómicas hacemos estudios socioambientales, caracterizaciones de biodiversidad, análisis del uso del suelo y cálculo de gases de efecto invernadero.</p> <!--segundo parrafo: que hacen-->
+
+            <dl class="ficha"> <!--dl es una lista de datos: dt es el dato y dd lo que significa. ficha es mi estilo, como una ficha tecnica-->
+              <div> <!--primera fila de la ficha-->
+                <dt class="cifra contador" data-meta="2">0</dt> <!--el numero empieza en 0 y el js lo sube hasta el data-meta, o sea 2-->
+                <dd>países donde trabajamos: Colombia y Honduras</dd> <!--lo que significa ese numero-->
+              </div> <!--cierro la primera fila-->
+              <div> <!--segunda fila-->
+                <dt class="cifra contador" data-meta="2">0</dt> <!--sube de 0 a 2-->
+                <dd>estándares que auditamos: ISCC y RSPO</dd> <!--lo que significa-->
+              </div> <!--cierro la segunda fila-->
+              <div> <!--tercera fila-->
+                <dt class="cifra contador" data-meta="4">0</dt> <!--sube de 0 a 4-->
+                <dd>profesiones en el equipo: ingeniería ambiental, agronomía, biología y ciencias socioeconómicas</dd> <!--lo que significa-->
+              </div> <!--cierro la tercera fila-->
+            </dl> <!--cierro la ficha-->
+          </div> <!--cierro la columna izquierda-->
+
+          <div class="col-lg-6 revelar" data-efecto="derecha" style="--retraso: .15s"> <!--la otra mitad, entra desde la derecha. --retraso: .15s = espera 0.15 segundos para no salir al mismo tiempo que la izquierda-->
+            <figure class="hoja-mapa pilares"> <!--otro marco de plano, ahora para los pilares-->
+              <img src="img/pilares.png" alt="Tres medallones: ambiental, social y económico" class="img-fluid"> <!--la imagen de los 3 pilares-->
+            </figure> <!--cierro el marco-->
+            <p class="mt-3">La ingeniería sostenible diseña y gestiona procesos que previenen, controlan y remedian problemas ambientales y sociales, equilibrando tres pilares: ambiental, social y económico.</p> <!--mt-3: margen arriba de tamaño 3 (m = margin, t = top)-->
+            <blockquote class="nombre-uwa"> <!--blockquote es la etiqueta para una cita, aqui va de donde sale el nombre-->
+              <p>Nuestro nombre viene del pueblo indígena U'wa, guardianes del planeta azul, conocidos por su respeto al medio natural y su saber sobre las plantas.</p> <!--el texto de la cita-->
+            </blockquote> <!--cierro la cita-->
+          </div> <!--cierro la columna derecha-->
+
+        </div> <!--cierro la fila-->
+      </div> <!--cierro el container-->
+      <svg class="ola ola-salvia" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 50 C240 90 480 10 720 40 C960 70 1200 20 1440 45 V80 H0 Z"/></svg> <!--la ola de abajo que une con la siguiente seccion. preserveAspectRatio="none" deja que se estire a todo el ancho-->
+    </section> <!--cierro nosotros-->
+
+
+    <!-- =====================================================================
+         SECCION 3: SERVICIOS
+         una lista como el indice de un informe: una fila por servicio
+         ===================================================================== -->
+    <section id="servicios" class="seccion seccion-salvia"> <!--seccion-salvia le pone el fondo verde clarito-->
+      <div class="container"> <!--container de boots para centrar-->
+        <h2 class="titulo-seccion revelar">Qué hacemos</h2> <!--el titulo, tambien aparece al bajar-->
+        <p class="mb-5 revelar" style="--retraso: .1s">Cuatro líneas de consultoría para producir y certificarse de forma sostenible.</p> <!--mb-5: margen abajo grande (b = bottom)-->
+
+        <ul class="servicios"> <!--ul la lista, cada li es un servicio-->
+          <li class="servicio revelar" style="--retraso: 0.00s"> <!--primer servicio, sin espera. cada uno sale un poquito despues del otro, como en escalerita-->
+            <span class="servicio-icono"><i class="bi bi-patch-check"></i></span> <!--el icono dentro de una mancha con forma de hoja (la forma la hace el css)-->
+            <h3>Consultoría y auditoría</h3> <!--nombre del servicio-->
+            <p>Implementación y mantenimiento de estándares internacionales de sostenibilidad, con auditores certificados.</p> <!--la explicacion-->
+            <p class="normas">ISCC, RSPO</p> <!--las normas con las que trabaja ese servicio-->
+          </li> <!--cierro el primer servicio-->
+          <li class="servicio revelar" style="--retraso: 0.12s"> <!--segundo servicio, espera 0.12 segundos-->
+            <span class="servicio-icono"><i class="bi bi-cloud-haze2"></i></span> <!--icono de nube-->
+            <h3>Gases de efecto invernadero</h3> <!--nombre del servicio-->
+            <p>Cálculo de GEI con las metodologías del IPCC, desde el cultivo hasta el biocombustible final.</p> <!--la explicacion-->
+            <p class="normas">IPCC</p> <!--la norma-->
+          </li> <!--cierro el segundo servicio-->
+          <li class="servicio revelar" style="--retraso: 0.24s"> <!--tercer servicio, espera 0.24 segundos-->
+            <span class="servicio-icono"><i class="bi bi-map"></i></span> <!--icono de mapa-->
+            <h3>Cambio en el uso del suelo</h3> <!--nombre del servicio-->
+            <p>Análisis del cambio de uso del suelo y cartografía con imágenes satelitales de alta resolución.</p> <!--la explicacion-->
+            <p class="normas">LUC, cartografía</p> <!--las normas-->
+          </li> <!--cierro el tercer servicio-->
+          <li class="servicio revelar" style="--retraso: 0.36s"> <!--cuarto servicio, espera 0.36 segundos-->
+            <span class="servicio-icono"><i class="bi bi-binoculars"></i></span> <!--icono de binoculares-->
+            <h3>Estudios de biodiversidad</h3> <!--nombre del servicio-->
+            <p>Evaluaciones ecológicas en campo y fototrampeo de aves, mamíferos y reptiles.</p> <!--la explicacion-->
+            <p class="normas">Fototrampeo</p> <!--la tecnica-->
+          </li> <!--cierro el cuarto servicio-->
+        </ul> <!--cierro la lista de servicios-->
+      </div> <!--cierro el container-->
+      <svg class="ola ola-blanca" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 45 C260 10 500 75 760 40 C1020 5 1240 60 1440 30 V80 H0 Z"/></svg> <!--ola blanca que pasa a la seccion de la prueba, que tiene fondo blanco-->
+    </section> <!--cierro servicios-->
+
+
+    <!-- =====================================================================
+         SECCION 4: PRUEBALO (mini prueba)
+         primero se ve una portadita con "Empezar", y el js pone las preguntas
+         ===================================================================== -->
+    <section id="pruebalo" class="seccion"> <!--la seccion de la prueba-->
+      <div class="container"> <!--container de boots para centrar-->
+        <div class="quiz revelar" data-efecto="zoom"> <!--la caja de la prueba con borde verde, aparece creciendo (zoom)-->
+
+          <div id="quizInicio" class="quiz-inicio"> <!--pantalla 1: la portadita de la prueba-->
+            <figure class="hoja-mapa quiz-ilustracion"> <!--marco de plano para la ilustracion-->
+              <img src="img/ilustracion-quiz.png" alt="Libros, birrete y diploma" class="img-fluid"> <!--la ilustracion de los libros-->
+            </figure> <!--cierro el marco-->
+            <div> <!--caja para el texto y el boton-->
+              <h2 class="titulo-seccion">¿Cuánto sabes de sostenibilidad y seguridad?</h2> <!--titulo de la prueba-->
+              <p>Tres preguntas rápidas. Al final ves tu puntaje.</p> <!--explicacion cortica-->
+              <button type="button" id="btnEmpezar" class="btn btn-uwa btn-lg">Empezar la prueba</button> <!--button es un boton de verdad, type="button" para que no envie nada, el id para que el js sepa cuando le dan clic-->
+            </div> <!--cierro la caja del texto-->
+          </div> <!--cierro la pantalla 1-->
+
+          <div id="quizJuego" class="quiz-juego" hidden> <!--pantalla 2: las preguntas. hidden = escondida, el js la muestra cuando le dan "Empezar"-->
+            <img id="quizMascota" src="img/mascota-normal.png" alt="" class="quiz-mascota"> <!--la mascota, el js le cambia la imagen: feliz si acierta, triste si no-->
+            <div class="quiz-contenido"> <!--caja para todo lo de la derecha-->
+              <div class="quiz-estado"> <!--la fila de arriba: en que pregunta voy y los puntos-->
+                <span id="quizPaso">Pregunta 1 de 3</span> <!--el js cambia este texto en cada pregunta-->
+                <span><span id="quizPuntos">0</span> puntos</span> <!--el js cambia el numero de puntos-->
+              </div> <!--cierro la fila de arriba-->
+              <div class="progress mb-4" role="progressbar" aria-label="Avance de la prueba" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"> <!--progress es la barra de avance de boots, los aria- le dicen al lector de pantalla en cuanto va (de 0 a 100)-->
+                <div id="quizBarra" class="progress-bar" style="width: 0%"></div> <!--la parte que se llena, empieza en 0% y el js la va llenando-->
+              </div> <!--cierro la barra-->
+              <div id="quiz" aria-live="polite"></div> <!--caja vacia: aqui el js escribe la pregunta y las opciones. aria-live le avisa al lector de pantalla cuando cambia-->
+            </div> <!--cierro la caja de la derecha-->
+          </div> <!--cierro la pantalla 2-->
+
+        </div> <!--cierro la caja de la prueba-->
+      </div> <!--cierro el container-->
+      <svg class="ola ola-salvia" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 50 C240 90 480 10 720 40 C960 70 1200 20 1440 45 V80 H0 Z"/></svg> <!--ola verde clarita que pasa a contacto-->
+    </section> <!--cierro pruebalo-->
+
+
+    <!-- =====================================================================
+         SECCION 5: CONTACTO
+         izquierda: los datos de la empresa. derecha: el formulario
+         ===================================================================== -->
+    <section id="contacto" class="seccion seccion-salvia"> <!--seccion de contacto con fondo verde clarito-->
+      <img src="img/hojas.png" alt="" class="hoja-flotante hoja-4" data-velocidad="0.1" aria-hidden="true"> <!--hojita flotante de decoracion-->
+      <div class="container"> <!--container de boots para centrar-->
+        <div class="row gy-5 gx-lg-5"> <!--fila con espacio entre columnas-->
+
+          <div class="col-lg-5 revelar" data-efecto="izquierda"> <!--5 de 12 columnas para los datos, entra desde la izquierda-->
+            <h2 class="titulo-seccion">Hablemos de tu proyecto</h2> <!--titulo de contacto-->
+            <p>Cuéntanos qué necesitas certificar y te respondemos con una propuesta.</p> <!--texto de invitacion-->
+            <ul class="datos"> <!--lista con los datos de contacto-->
+              <li><i class="bi bi-geo-alt"></i> Bogotá D.C., Colombia</li> <!--icono de ubicacion y la ciudad-->
+              <li><i class="bi bi-telephone"></i> (601) 346 6271</li> <!--icono de telefono y el fijo-->
+              <li><i class="bi bi-phone"></i> (+57) 316 821 0309</li> <!--icono de celular y el numero-->
+            </ul> <!--cierro la lista de datos-->
+            <img src="img/mascota-normal.png" alt="" class="contacto-mascota d-none d-lg-block"> <!--d-none la esconde y d-lg-block la muestra en computador, o sea en celular no sale porque ocupa mucho espacio-->
+          </div> <!--cierro la columna de los datos-->
+
+          <div class="col-lg-7 revelar" data-efecto="derecha" style="--retraso: .15s"> <!--las otras 7 columnas para el formulario, entra desde la derecha-->
+            <form id="formContacto" class="formulario" novalidate> <!--form es el formulario. novalidate apaga los globitos del navegador para usar los mensajes rojos de boots-->
+              <div class="row g-3"> <!--una fila con espacio entre los campos-->
+                <div class="col-md-6"> <!--en tableta y computador ocupa la mitad (md = medium)-->
+                  <label for="nombre" class="form-label">Nombre</label> <!--label es el nombre del campo, for="nombre" lo une con el campo id="nombre": si le dan clic a la palabra, el cursor salta al campo-->
+                  <input type="text" id="nombre" name="nombre" class="form-control" required minlength="3" autocomplete="name"> <!--donde se escribe. name es con lo que el js lee el dato, form-control es el estilo de boots, required = obligatorio, minlength = minimo 3 letras-->
+                  <div class="invalid-feedback">Escribe tu nombre.</div> <!--invalid-feedback es de boots: este mensajito rojo SOLO sale si el campo esta mal-->
+                </div> <!--cierro el campo nombre-->
+                <div class="col-md-6"> <!--la otra mitad-->
+                  <label for="empresa" class="form-label">Empresa</label> <!--nombre del campo-->
+                  <input type="text" id="empresa" name="empresa" class="form-control" required autocomplete="organization"> <!--campo de la empresa, obligatorio-->
+                  <div class="invalid-feedback">Escribe el nombre de tu empresa.</div> <!--mensaje si esta vacio-->
+                </div> <!--cierro el campo empresa-->
+                <div class="col-md-6"> <!--la mitad-->
+                  <label for="correo" class="form-label">Correo</label> <!--nombre del campo-->
+                  <input type="email" id="correo" name="correo" class="form-control" required autocomplete="email" placeholder="tucorreo@empresa.com"> <!--type="email": el navegador revisa que tenga @ y en el celular sale el teclado con @. placeholder es el texto gris de ejemplo-->
+                  <div class="invalid-feedback">Escribe un correo con @, por ejemplo tucorreo@empresa.com.</div> <!--mensaje si el correo esta mal-->
+                </div> <!--cierro el campo correo-->
+                <div class="col-md-6"> <!--la otra mitad-->
+                  <label for="interes" class="form-label">Me interesa</label> <!--nombre del campo-->
+                  <select id="interes" name="interes" class="form-select" required> <!--select es la lista desplegable, form-select es su estilo de boots-->
+                    <option value="">Elige una opción</option> <!--la primera tiene value="" vacio, asi si no eligen nada sale como error-->
+                    <option>Consultoría y auditoría</option> <!--opcion 1-->
+                    <option>Gases de efecto invernadero</option> <!--opcion 2-->
+                    <option>Cambio en el uso del suelo</option> <!--opcion 3-->
+                    <option>Estudios de biodiversidad</option> <!--opcion 4-->
+                  </select> <!--cierro la lista desplegable-->
+                  <div class="invalid-feedback">Elige qué te interesa.</div> <!--mensaje si no eligen nada-->
+                </div> <!--cierro el campo interes-->
+                <div class="col-12"> <!--col-12: todo el ancho siempre-->
+                  <label for="mensaje" class="form-label">Mensaje</label> <!--nombre del campo-->
+                  <textarea id="mensaje" name="mensaje" class="form-control" rows="4" required minlength="10"></textarea> <!--textarea es una caja grande para varias lineas, rows="4" el alto en lineas, minimo 10 letras-->
+                  <div class="invalid-feedback">Cuéntanos un poco más: mínimo 10 letras.</div> <!--mensaje si escriben muy poquito-->
+                </div> <!--cierro el campo mensaje-->
+                <div class="col-12"> <!--todo el ancho para el boton-->
+                  <button type="submit" id="btnEnviar" class="btn btn-uwa btn-lg w-100"> <!--type="submit": este boton SI envia el formulario. w-100: ocupa el 100% del ancho-->
+                    <span class="spinner-border spinner-border-sm me-2 d-none" aria-hidden="true"></span> <!--la ruedita de cargando de boots, escondida con d-none hasta que el js la muestra. me-2: margen a la derecha-->
+                    <span class="btn-texto">Enviar mensaje</span> <!--el texto del boton, en un span para que el js lo pueda cambiar-->
+                  </button> <!--cierro el boton-->
+                </div> <!--cierro la caja del boton-->
+              </div> <!--cierro la fila de campos-->
+              <div id="respuesta" class="respuesta d-none" role="status"></div> <!--aqui sale el mensaje con la mascota despues de enviar, empieza escondido (d-none)-->
+            </form> <!--cierro el formulario-->
+          </div> <!--cierro la columna del formulario-->
+
+        </div> <!--cierro la fila-->
+      </div> <!--cierro el container-->
+      <svg class="ola ola-tinta" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40 C300 0 520 80 760 45 C1000 10 1220 70 1440 35 V80 H0 Z"/></svg> <!--ola oscura que pasa a el footer-->
+    </section> <!--cierro contacto-->
+
+  </main> <!--cierro el contenido principal-->
+
+
+  <!-- =====================================================================
+       FOOTER: la parte de abajo, logo + enlaces + año
+       ===================================================================== -->
+  <footer class="footer"> <!--el pie de la pagina-->
+    <div class="container"> <!--container de boots para centrar-->
+      <div class="row gy-4"> <!--fila con espacio vertical-->
+        <div class="col-md-5"> <!--en celular todo el ancho, en tableta y computador 5 de 12-->
+          <img src="img/logo.png" alt="Uwa Ec" height="38" class="footer-logo"> <!--el logo, el css lo pone blanco-->
+          <p class="mt-3">Uwa Consultores SAS. Ingeniería sostenible para el sector palmicultor y agroindustrial.</p> <!--el nombre legal de la empresa-->
+        </div> <!--cierro la columna del logo-->
+        <div class="col-6 col-md-3"> <!--col-6: en celular la mitad, asi las dos listas quedan lado a lado (6 + 6 = 12)-->
+          <h3>Empresa</h3> <!--titulo de la lista-->
+          <ul class="list-unstyled"> <!--list-unstyled es de boots: le quita los puntos a la lista-->
+            <li><a href="#nosotros">Nosotros</a></li> <!--enlace a nosotros-->
+            <li><a href="#servicios">Servicios</a></li> <!--enlace a servicios-->
+          </ul> <!--cierro la lista-->
+        </div> <!--cierro la columna-->
+        <div class="col-6 col-md-4"> <!--la otra mitad en celular, 4 de 12 en computador-->
+          <h3>Explora</h3> <!--titulo de la lista-->
+          <ul class="list-unstyled"> <!--lista sin puntos-->
+            <li><a href="#pruebalo">Hacer la prueba</a></li> <!--enlace a la prueba-->
+            <li><a href="#contacto">Contacto</a></li> <!--enlace a contacto-->
+          </ul> <!--cierro la lista-->
+        </div> <!--cierro la columna-->
+      </div> <!--cierro la fila-->
+      <p class="footer-final">© <span id="anio">2026</span> Uwa Ec, ingeniería sostenible</p> <!--el año va en un span con id porque el js lo cambia solo por el año actual-->
+    </div> <!--cierro el container-->
+  </footer> <!--cierro el footer-->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" defer></script> <!--el js de boots, hace funcionar la hamburguesa. defer = cargalo sin frenar la pagina. acordemonos que el js va al final-->
+  <script type="module" src="js/app.js"></script> <!--mi js. type="module" es js moderno-->
+</body> <!--cierro el cuerpo-->
+</html> <!--cierro toda la pagina-->
