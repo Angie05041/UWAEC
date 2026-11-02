@@ -1,15 +1,3 @@
-/* =====================================================================
-   ESTILOS DE LA PAGINA UWA EC, idea: "bitacora de campo"
-   El orden es el mismo de la pagina, de arriba hacia abajo:
-   1 colores, 2 base, 3 botones, 4 header, 5 inicio, 6 lo que comparten las secciones,
-   7 nosotros, 8 servicios, 9 pruebalo, 10 contacto, 11 footer,
-   12 animaciones, 13 decoracion (olas, hojas, sello), 14 celular
-   ===================================================================== */
-
-
-/* =====================================================================
-   1. COLORES, LETRAS Y MEDIDAS
-   ===================================================================== */
 :root { /* es como un guarda variables: si quiero cambiar el verde, lo cambio solo aqui y cambia en toda la pagina */
   --tinta: #17291F;        /* el color de las letras, un verde casi negro */
   --palma: #2F5D50;        /* el verde de la marca: botones y titulos */
@@ -23,10 +11,6 @@
   --letra-texto: 'Public Sans', system-ui, sans-serif;           /* la letra de los textos, igual con sus repuestos */
 } /* cierro las variables */
 
-
-/* =====================================================================
-   2. BASE, lo general de toda la pagina
-   ===================================================================== */
 html { scroll-behavior: smooth; } /* cuando le dan clic a el menu, baja suavecito y no de un salto */
 
 section { /* todas las secciones */
@@ -43,7 +27,8 @@ body { /* el cuerpo, todo lo que se ve */
   background: #fff;      /* fondo blanco */
 } /* cierro body */
 
-h1, h2, h3, h4 { font-family: var(--letra-titulos); color: inherit; } /* todos los titulos con la letra de titulos. inherit = toman el color de la caja donde estan */
+h1, h2, h3, h4 { font-family: var(--letra-titulos); color: inherit; } 
+/* todos los titulos con la letra de titulos. inherit = toman el color de la caja donde estan */
 
 a:focus-visible, button:focus-visible, .btn:focus-visible { /* cuando alguien navega con el teclado (tecla tab) */
   outline: 3px solid var(--palma); /* le pone un contorno verde para que se vea por donde va */
@@ -52,9 +37,6 @@ a:focus-visible, button:focus-visible, .btn:focus-visible { /* cuando alguien na
 .footer :focus-visible { outline-color: var(--dorado); } /* en el footer oscuro el contorno va dorado, porque el verde no se veria */
 
 
-/* =====================================================================
-   3. BOTONES (esquinas de 8px)
-   ===================================================================== */
 .btn-uwa, .btn-linea { /* lo que tienen igual los 2 botones, separados por coma */
   border-radius: 8px;     /* que tan redondeadas son las esquinas */
   font-weight: 600;       /* grosor de la letra: 400 normal, 600 semi negrita, 700 negrita */
@@ -68,10 +50,6 @@ a:focus-visible, button:focus-visible, .btn:focus-visible { /* cuando alguien na
 .btn-linea { background: transparent; color: var(--palma); border: 2px solid var(--palma); } /* boton solo con el borde, el fondo transparente */
 .btn-linea:hover { background: var(--palma); color: #fff; } /* con el mouse se llena de verde */
 
-
-/* =====================================================================
-   4. HEADER, el menu
-   ===================================================================== */
 #menu { /* el # es porque lo llamo por su id="menu" */
   background: #fff;                     /* fondo blanco */
   border-bottom: 1px solid transparent; /* una linea abajo pero invisible, transparent */
@@ -79,7 +57,8 @@ a:focus-visible, button:focus-visible, .btn:focus-visible { /* cuando alguien na
   transition: padding .25s, border-color .25s; /* transition hace que el cambio sea suave y no de golpe, en 0.25 segundos */
 } /* cierro el menu */
 
-#menu.menu-abajo { padding: .45rem 0; border-bottom-color: var(--salvia); } /* cuando bajo, el js le pone "menu-abajo": se hace mas delgado y aparece la linea de abajo */
+#menu.menu-abajo { padding: .45rem 0; border-bottom-color: var(--salvia); } /* cuando bajo, el js le pone "menu-abajo": se hace mas delgado y 
+aparece la linea de abajo */
 
 #menu .nav-link { /* los enlaces que estan dentro del menu */
   color: var(--tinta);    /* color de la letra */
@@ -102,10 +81,6 @@ a:focus-visible, button:focus-visible, .btn:focus-visible { /* cuando alguien na
 .navbar-toggler { border: 0; font-size: 1.9rem; color: var(--palma); } /* la hamburguesa sin borde, grande y verde */
 .navbar-toggler:focus { box-shadow: none; } /* boots le pone una sombra al tocarla, se la quito */
 
-
-/* =====================================================================
-   5. SECCION 1: INICIO
-   ===================================================================== */
 .inicio { padding: 8.5rem 0 5rem; } /* 3 valores: arriba 8.5rem (por el menu fijo), lados 0, abajo 5rem */
 
 .curvas { /* la caja de las curvas de nivel, detras de todo */
@@ -137,7 +112,8 @@ a:focus-visible, button:focus-visible, .btn:focus-visible { /* cuando alguien na
 .titulo-grande .linea { display: block; } /* cada span en su propia linea */
 .titulo-grande .linea + .linea { font-weight: 500; } /* el + es "la linea que va despues de otra", o sea la segunda: va mas delgadita */
 
-.intro { font-size: 1.15rem; color: var(--gris); max-width: 34rem; margin-bottom: 2rem; } /* el parrafo del inicio. max-width = limite de ancho para que no se estire de mas */
+.intro { font-size: 1.15rem; color: var(--gris); max-width: 34rem; margin-bottom: 2rem; } /* el parrafo del inicio. max-width
+ = limite de ancho para que no se estire de mas */
 
 .hoja-mapa { /* el marco de las ilustraciones, como una hoja de un plano */
   position: relative;                  /* para ubicar las esquinitas y el sello adentro */
@@ -154,13 +130,13 @@ a:focus-visible, button:focus-visible, .btn:focus-visible { /* cuando alguien na
   height: 22px;                 /* alto de la L */
   border: 0 solid var(--palma); /* el borde empieza en 0 y abajo le digo cuales lados si se ven */
 } /* cierro lo comun de las esquinitas */
-.hoja-mapa::before { top: -6px; left: -6px; border-top-width: 3px; border-left-width: 3px; } /* arriba a la izquierda: solo borde de arriba y de la izquierda, eso forma la L */
+.hoja-mapa::before { top: -6px; left: -6px; border-top-width: 3px; border-left-width: 3px; } /* arriba a la izquierda: solo borde de 
+arriba y de la izquierda, eso forma la L */
 .hoja-mapa::after { bottom: -6px; right: -6px; border-bottom-width: 3px; border-right-width: 3px; } /* abajo a la derecha, la L al reves */
-
-
-/* =====================================================================
-   6. LO QUE COMPARTEN TODAS LAS SECCIONES
-   ===================================================================== */
+.inicio .hoja-mapa { /* solo el marco de la imagen del inicio, las otras no se tocan */
+  width: 85%;      /* que tan ancho es el marco: 100% es todo, 85% mas pequeño, 70% mas pequeño todavia */
+  margin: 0 auto;  /* lo centra en su columna: 0 arriba y abajo, auto a los lados lo reparte por igual */
+} /* cierro el marco del inicio */
 .seccion { padding: 6rem 0; } /* la cajita de regalo de cada seccion: 6rem arriba y abajo */
 .seccion-salvia { background: var(--salvia-fondo); } /* el fondo verde clarito */
 
@@ -187,10 +163,6 @@ a:focus-visible, button:focus-visible, .btn:focus-visible { /* cuando alguien na
 .visible .titulo-seccion::after, /* cuando la caja donde esta el titulo aparece... */
 .titulo-seccion.visible::after { width: 120px; } /* ...o el titulo mismo aparece, la rayita crece hasta 120px y parece que se dibuja */
 
-
-/* =====================================================================
-   7. SECCION 2: NOSOTROS
-   ===================================================================== */
 .ficha { margin: 2.5rem 0 0; border-top: 2px solid var(--palma); } /* la ficha tecnica con una linea verde gruesa arriba */
 .ficha > div { /* el > es "los div que estan directamente adentro", o sea cada fila */
   display: grid;                          /* grid es como una cuadricula */
@@ -225,11 +197,8 @@ a:focus-visible, button:focus-visible, .btn:focus-visible { /* cuando alguien na
 } /* cierro la cita */
 .nombre-uwa p { margin: 0; } /* el parrafo de la cita sin margen */
 
-
-/* =====================================================================
-   8. SECCION 3: SERVICIOS (como el indice de un informe)
-   ===================================================================== */
-.servicios { list-style: none; padding: 0; margin: 0; border-top: 2px solid var(--palma); position: relative; z-index: 0; } /* list-style: none le quita los puntos a la lista. z-index: 0 crea una capa para que el fondo del hover quede detras del texto */
+.servicios { list-style: none; padding: 0; margin: 0; border-top: 2px solid var(--palma); position: relative; z-index: 0; } 
+/* list-style: none le quita los puntos a la lista. z-index: 0 crea una capa para que el fondo del hover quede detras del texto */
 
 .servicio { /* cada fila */
   position: relative;                        /* para ubicar el fondo que barre */
@@ -273,29 +242,28 @@ a:focus-visible, button:focus-visible, .btn:focus-visible { /* cuando alguien na
 .servicio p { margin: 0; color: var(--gris); } /* la explicacion en gris y sin margen */
 .servicio .normas { font-weight: 600; color: var(--palma); text-align: right; } /* las normas en verde y a la derecha */
 
-
-/* =====================================================================
-   9. SECCION 4: PRUEBALO
-   ===================================================================== */
 .quiz { /* la caja de la prueba */
   border: 2px solid var(--palma);     /* borde verde */
   padding: clamp(1.5rem, 4vw, 3rem);  /* cajita de regalo que se adapta a la pantalla */
 } /* cierro la caja */
 
 .quiz-inicio, .quiz-juego { display: flex; align-items: center; gap: 2.5rem; } /* imagen a la izquierda y contenido a la derecha */
-.quiz-inicio[hidden], .quiz-juego[hidden] { display: none; } /* [hidden] = cuando tenga el atributo hidden se esconde. lo pongo porque el display: flex de arriba le ganaba */
+.quiz-inicio[hidden], .quiz-juego[hidden] { display: none; } /* [hidden] = cuando tenga el atributo hidden se esconde.
+ lo pongo porque el display: flex de arriba le ganaba */
 
 .quiz-ilustracion { width: 260px; flex-shrink: 0; margin: 0; } /* flex-shrink: 0 = que no se encoja */
 .quiz-mascota { width: 160px; flex-shrink: 0; } /* la mascota de la prueba */
 .quiz-mascota.saltar { animation: saltar .45s ease-out; } /* cuando responde, el js le pone "saltar" y la mascota brinca */
 .quiz-contenido { flex: 1; min-width: 0; } /* flex: 1 = ocupa todo el espacio que sobra */
 
-.quiz-estado { display: flex; justify-content: space-between; font-size: .9rem; color: var(--gris); margin-bottom: .4rem; } /* "Pregunta 1 de 3" a la izquierda y los puntos a la derecha */
+.quiz-estado { display: flex; justify-content: space-between; font-size: .9rem; color: var(--gris); margin-bottom: .4rem; } 
+/* "Pregunta 1 de 3" a la izquierda y los puntos a la derecha */
 
 .progress { height: 8px; border-radius: 4px; background: var(--salvia-fondo); } /* la barra de boots, mas delgadita */
 .progress-bar { background: var(--palma); transition: width .4s; } /* la parte que se llena, suave */
 
-.quiz-pregunta { font-family: var(--letra-titulos); font-size: 1.35rem; font-weight: 700; line-height: 1.25; margin-bottom: 1.25rem; } /* el texto de la pregunta */
+.quiz-pregunta { font-family: var(--letra-titulos); font-size: 1.35rem; font-weight: 700; line-height: 1.25; margin-bottom: 1.25rem; } 
+/* el texto de la pregunta */
 
 .quiz-opcion { /* cada boton de respuesta */
   display: block;                   /* uno debajo del otro */
@@ -308,16 +276,13 @@ a:focus-visible, button:focus-visible, .btn:focus-visible { /* cuando alguien na
   padding: .75rem 1rem;             /* espacio adentro */
   margin-bottom: .6rem;             /* espacio entre opciones */
 } /* cierro las opciones */
-.quiz-opcion:hover:not(:disabled) { border-color: var(--palma); background: var(--salvia-fondo); } /* :not(:disabled) = solo si NO esta bloqueado, o sea antes de responder */
+.quiz-opcion:hover:not(:disabled) { border-color: var(--palma); background: var(--salvia-fondo); } 
+/* :not(:disabled) = solo si NO esta bloqueado, o sea antes de responder */
 .quiz-opcion.correcta { background: #2E7D57; border-color: #2E7D57; color: #fff; }   /* la correcta en verde */
 .quiz-opcion.incorrecta { background: #B4473A; border-color: #B4473A; color: #fff; } /* la que estaba mal en rojo */
 
 .quiz-explicacion { color: var(--gris); margin: .75rem 0 1rem; } /* la explicacion despues de responder */
 
-
-/* =====================================================================
-   10. SECCION 5: CONTACTO
-   ===================================================================== */
 .datos { list-style: none; padding: 0; margin: 2rem 0; border-top: 2px solid var(--palma); } /* la lista de datos sin puntos y con linea verde arriba */
 .datos li { display: flex; gap: .75rem; padding: .8rem 0; border-bottom: 1px solid var(--salvia); } /* cada dato: icono y texto en fila, con linea abajo */
 .datos i { color: var(--palma); } /* los iconos verdes */
@@ -351,24 +316,16 @@ a:focus-visible, button:focus-visible, .btn:focus-visible { /* cuando alguien na
 .respuesta img { height: 64px; } /* la mascota pequeñita */
 .respuesta.error { background: #FBECE9; color: #8A2E22; } /* si es un error, rosadito con letra roja */
 
-
-/* =====================================================================
-   11. FOOTER
-   ===================================================================== */
 .footer { background: var(--tinta); color: #C9D8CD; padding: 4rem 0 1.5rem; } /* fondo oscuro, letra clarita y espacio */
 .footer-logo { filter: brightness(0) invert(1); } /* el logo es verde y no se veria en lo oscuro: brightness(0) lo vuelve negro e invert(1) lo voltea a blanco */
 .footer h3 { color: #fff; font-size: 1rem; font-weight: 700; margin-bottom: .75rem; } /* los titulos del footer blancos y pequeños */
 .footer a { color: #C9D8CD; text-decoration: none; line-height: 2; } /* text-decoration: none le quita el subrayado a los enlaces */
 .footer a:hover { color: var(--dorado); } /* con el mouse se ponen dorados */
-.footer-final { border-top: 1px solid rgba(169, 193, 174, .3); margin: 2.5rem 0 0; padding-top: 1.5rem; font-size: .9rem; } /* la ultima linea con el año, separada con una linea fina */
+.footer-final { border-top: 1px solid rgba(169, 193, 174, .3); margin: 2.5rem 0 0; padding-top: 1.5rem; font-size: .9rem; } 
+/* la ultima linea con el año, separada con una linea fina */
 
-
-/* =====================================================================
-   12. ANIMACIONES
-   a) al cargar: el titulo sube linea por linea y las curvas se dibujan
-   b) al bajar: cada bloque "revelar" entra desde su lado (data-efecto)
-   ===================================================================== */
-.inicio .linea, .inicio .intro, .inicio .d-flex { animation: subir .9s cubic-bezier(.2, .7, .2, 1) both; } /* lo del inicio usa la animacion "subir" de 0.9 segundos. cubic-bezier: arranca rapido y frena suave. both: espera invisible y termina visible */
+.inicio .linea, .inicio .intro, .inicio .d-flex { animation: subir .9s cubic-bezier(.2, .7, .2, 1) both; } 
+/* lo del inicio usa la animacion "subir" de 0.9 segundos. cubic-bezier: arranca rapido y frena suave. both: espera invisible y termina visible */
 .inicio .linea + .linea { animation-delay: .12s; } /* la segunda linea del titulo sale despuesito */
 .inicio .intro { animation-delay: .24s; }           /* luego el parrafo */
 .inicio .d-flex { animation-delay: .36s; }          /* y luego los botones, como en escalerita */
@@ -394,14 +351,12 @@ a:focus-visible, button:focus-visible, .btn:focus-visible { /* cuando alguien na
   40% { transform: translateY(-14px); }  /* en la mitad sube 14px */
 } /* cierro saltar */
 @keyframes mecer { /* las hojas se mecen de un lado a otro */
-  0%, 100% { transform: translateY(var(--mover, 0px)) rotate(-4deg); } /* al principio y al final inclinada a un lado. --mover lo cambia el js al bajar (parallax) */
-  50% { transform: translateY(var(--mover, 0px)) rotate(4deg); }       /* en la mitad inclinada al otro lado */
+  0%, 100% { transform: translateY(var(--mover, 0px)) rotate(-4deg); } 
+  /* al principio y al final inclinada a un lado. --mover lo cambia el js al bajar (parallax) */
+  50% { transform: translateY(var(--mover, 0px)) rotate(4deg); }       
+  /* en la mitad inclinada al otro lado */
 } /* cierro mecer */
 
-
-/* =====================================================================
-   13. DECORACION
-   ===================================================================== */
 .sello { /* el sello dorado en la esquina de la ilustracion, quieto */
   position: absolute; /* ubicado exacto en la esquina */
   top: -42px;         /* un poquito por fuera de la esquina */
@@ -410,8 +365,10 @@ a:focus-visible, button:focus-visible, .btn:focus-visible { /* cuando alguien na
   z-index: 2;         /* encima de la ilustracion */
 } /* cierro el sello */
 .sello circle { fill: var(--dorado); } /* fill es el relleno en los svg, el circulo dorado */
-.sello text { font-family: var(--letra-titulos); font-size: 10.5px; font-weight: 700; letter-spacing: .06em; fill: var(--selva); } /* el texto redondo del sello */
-.sello-hoja { fill: none; stroke: var(--selva); stroke-width: 2.5; stroke-linecap: round; } /* la hojita del centro: stroke es la linea del dibujo, round = puntas redonditas */
+.sello text { font-family: var(--letra-titulos); font-size: 10.5px; font-weight: 700; letter-spacing: .06em; fill: var(--selva); } 
+/* el texto redondo del sello */
+.sello-hoja { fill: none; stroke: var(--selva); stroke-width: 2.5; stroke-linecap: round; } 
+/* la hojita del centro: stroke es la linea del dibujo, round = puntas redonditas */
 
 .ola { /* las olas entre secciones, se pintan del color de la seccion que sigue */
   position: absolute;   /* encima de la seccion */
@@ -440,11 +397,6 @@ a:focus-visible, button:focus-visible, .btn:focus-visible { /* cuando alguien na
 .hoja-4 { bottom: 12%; left: -90px; } /* la de contacto, abajo a la izquierda */
 .seccion > .container, .inicio > .container { position: relative; z-index: 1; } /* el contenido siempre encima de las hojas, para que no estorben al leer */
 
-
-/* =====================================================================
-   14. CELULAR Y TABLETA
-   @media = "si la pantalla mide menos de tanto, usa estos estilos"
-   ===================================================================== */
 @media (max-width: 991.98px) { /* tableta y celular (menos de 992px) */
   #enlaces { padding: 1rem 0; } /* el menu abierto con espacio */
   #enlaces .btn-uwa { width: 100%; margin-top: .5rem; } /* el boton de escribenos a todo el ancho */
@@ -462,7 +414,8 @@ a:focus-visible, button:focus-visible, .btn:focus-visible { /* cuando alguien na
   .hoja-flotante { width: 140px; } /* las hojas mas pequeñas */
   .ola { height: 40px; } /* las olas mas bajitas */
   .seccion:has(.ola) { padding-bottom: 6rem; } /* menos espacio para la ola */
-  .revelar[data-efecto="izquierda"]:not(.visible), .revelar[data-efecto="derecha"]:not(.visible) { transform: translateY(40px); } /* en celular todos entran desde abajo, porque desde los lados se saldrian de la pantalla */
+  .revelar[data-efecto="izquierda"]:not(.visible), .revelar[data-efecto="derecha"]:not(.visible) { transform: translateY(40px); } 
+  /* en celular todos entran desde abajo, porque desde los lados se saldrian de la pantalla */
   .quiz-inicio, .quiz-juego { flex-direction: column; text-align: center; gap: 1.25rem; } /* la prueba en columna: imagen arriba y contenido abajo, centrado */
   .quiz-inicio .titulo-seccion { margin-inline: auto; } /* el titulo centrado */
   .quiz-ilustracion { width: 170px; } /* la ilustracion mas pequeña */
@@ -471,11 +424,3 @@ a:focus-visible, button:focus-visible, .btn:focus-visible { /* cuando alguien na
   .inicio .btn { flex: 1 1 100%; } /* los botones del inicio a todo el ancho, igualitos */
   .ficha > div { grid-template-columns: 2.75rem 1fr; } /* la columna del numero mas angosta */
 } /* cierro celular */
-
-@media (prefers-reduced-motion: reduce) { /* personas que configuran su equipo para ver menos movimiento (porque se marean) */
-  *, *::before, *::after { animation: none !important; transition: none !important; } /* el * es "todo": apago animaciones. !important le gana a todo lo de arriba */
-  html { scroll-behavior: auto; } /* el menu salta sin deslizar */
-  .revelar { opacity: 1; transform: none; } /* los bloques visibles de una vez */
-  .curvas path { stroke-dashoffset: 0; } /* las curvas dibujadas de una vez */
-  .titulo-seccion::after { width: 120px; } /* la rayita de los titulos completa */
-} /* cierro menos movimiento */

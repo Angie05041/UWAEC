@@ -1,23 +1,5 @@
-// =====================================================================
-// JAVASCRIPT DE LA PAGINA UWA EC
-// aqui esta todo lo que hace que la pagina "reaccione" o se mueva:
-//   1. el menu se achica al bajar y marca la seccion donde estoy
-//   2. las curvas de nivel se dibujan solas
-//   3. los bloques aparecen al bajar
-//   4. los contadores suben de 0 a su numero
-//   5. las hojas flotan a distinta velocidad al bajar
-//   6. la mini prueba con la mascota
-//   7. el formulario de contacto
-//   8. el año del footer
-// casi todo sigue la misma receta: 1) busco el elemento en el html, 2) espero a que pase algo
-// (un evento: clic, bajar, enviar), 3) cambio la pagina
-// =====================================================================
-
-
-// ---------------------------------------------------------------------
-// 1. MENU
-// ---------------------------------------------------------------------
-const menu = document.querySelector('#menu') // guardo el menu en una variable. querySelector busca en la pagina, el # es para buscar por id. const = no se va a reemplazar
+const menu = document.querySelector('#menu') // guardo el menu en una variable. querySelector busca en la pagina, 
+// el # es para buscar por id. const = no se va a reemplazar
 
 const revisarMenu = () => { // una funcion flecha: un bloque de codigo con nombre que puedo usar muchas veces, los parentesis vacios porque no recibe nada
   menu.classList.toggle('menu-abajo', window.scrollY > 40) // toggle es "pon o quita": si baje mas de 40 pixeles le PONE menu-abajo, si no se la QUITA
@@ -31,28 +13,28 @@ const cajaEnlaces = document.querySelector('#enlaces') // la caja que se abre co
 enlacesMenu.forEach((enlace) => { // forEach es "para cada uno": recorre los enlaces uno por uno y le dice enlace, como un apodo
   enlace.addEventListener('click', () => { // cuando le dan clic a ese enlace...
     if (cajaEnlaces.classList.contains('show')) { // ...si la caja tiene "show" (boots se la pone cuando el menu esta abierto)...
-      bootstrap.Collapse.getOrCreateInstance(cajaEnlaces).hide() // ...le pido a boots el control de esa caja y la cierro con hide(). asi en celular se cierra solo
+      bootstrap.Collapse.getOrCreateInstance(cajaEnlaces).hide() // ...le pido a boots el control de esa caja y la cierro con hide(). 
+      // asi en celular se cierra solo
     } // cierro el if
   }) // cierro el clic
 }) // cierro el forEach
 
 const secciones = document.querySelectorAll('main section') // todas las section que estan dentro del main, para marcar en el menu la que estoy viendo
 
-const vigilaSecciones = new IntersectionObserver((entradas) => { // IntersectionObserver es un vigilante: avisa cuando algo entra o sale de la pantalla. entradas = lo que cambio
+const vigilaSecciones = new IntersectionObserver((entradas) => { // IntersectionObserver es un vigilante: avisa cuando algo entra o 
+// sale de la pantalla. entradas = lo que cambio
   entradas.forEach((entrada) => { // reviso cada cosa que cambio
     if (!entrada.isIntersecting) return // isIntersecting = "esta en pantalla". el ! es "NO": si NO esta, return = me salgo y no hago nada
     enlacesMenu.forEach((enlace) => { // recorro los enlaces del menu
-      enlace.classList.toggle('active', enlace.getAttribute('href') === `#${entrada.target.id}`) // le pongo "active" solo al enlace cuyo href es igual al id de la seccion en pantalla. === es "exactamente igual"
+      enlace.classList.toggle('active', enlace.getAttribute('href') === `#${entrada.target.id}`) // le pongo "active"
+      //  solo al enlace cuyo href es igual al id de la seccion en pantalla. === es "exactamente igual"
     }) // cierro el recorrido de enlaces
   }) // cierro el recorrido de entradas
-}, { rootMargin: '-45% 0px -50% 0px' }) // rootMargin achica la zona que vigila a una franjita en la mitad de la pantalla, asi cuenta cuando la seccion pasa por la mitad
+}, { rootMargin: '-45% 0px -50% 0px' }) // rootMargin achica la zona que vigila a una franjita en la mitad de la pantalla, 
+// asi cuenta cuando la seccion pasa por la mitad
 
 secciones.forEach((seccion) => vigilaSecciones.observe(seccion)) // le digo al vigilante que vigile cada seccion
 
-
-// ---------------------------------------------------------------------
-// 2. CURVAS DE NIVEL QUE SE DIBUJAN SOLAS
-// ---------------------------------------------------------------------
 const cajaCurvas = document.querySelector('#curvasHero') // la caja vacia del inicio
 
 const dibujarCurvas = async () => { // async avisa que adentro vamos a esperar algo que se demora (traer un archivo)
@@ -67,10 +49,6 @@ const dibujarCurvas = async () => { // async avisa que adentro vamos a esperar a
 
 dibujarCurvas() // la llamo para que arranque. acordemonos: una funcion no hace nada hasta que la llamamos
 
-
-// ---------------------------------------------------------------------
-// 3. BLOQUES QUE APARECEN AL BAJAR
-// ---------------------------------------------------------------------
 const vigilaRevelar = new IntersectionObserver((entradas) => { // otro vigilante, ahora para los bloques
   entradas.forEach((entrada) => { // reviso cada bloque que cambio
     if (entrada.isIntersecting) { // si el bloque entro en la pantalla...
@@ -82,10 +60,6 @@ const vigilaRevelar = new IntersectionObserver((entradas) => { // otro vigilante
 
 document.querySelectorAll('.revelar').forEach((bloque) => vigilaRevelar.observe(bloque)) // busco todos los que tienen la clase revelar y los pongo a vigilar
 
-
-// ---------------------------------------------------------------------
-// 4. CONTADORES
-// ---------------------------------------------------------------------
 const animarContador = (elemento) => { // esta si recibe algo: el numero que tiene que animar
   const meta = Number(elemento.dataset.meta) // dataset.meta lee el data-meta del html. llega como texto "4" y Number lo vuelve numero 4
   let actual = 0 // empieza en 0. let y no const porque va a ir cambiando
@@ -107,10 +81,6 @@ const vigilaContadores = new IntersectionObserver((entradas) => { // otro vigila
 
 document.querySelectorAll('.contador').forEach((contador) => vigilaContadores.observe(contador)) // pongo a vigilar todos los contadores
 
-
-// ---------------------------------------------------------------------
-// 5. HOJAS QUE FLOTAN (efecto parallax: cosas que se mueven a distinta velocidad al bajar)
-// ---------------------------------------------------------------------
 const hojas = document.querySelectorAll('.hoja-flotante') // todas las hojitas
 
 const moverHojas = () => { // mueve las hojas segun lo que he bajado
@@ -124,10 +94,6 @@ const moverHojas = () => { // mueve las hojas segun lo que he bajado
 window.addEventListener('scroll', moverHojas, { passive: true }) // cada vez que bajo, muevo las hojas. passive: true = no bloqueo el scroll, va mas fluido
 moverHojas() // y una vez al cargar
 
-
-// ---------------------------------------------------------------------
-// 6. MINI PRUEBA
-// ---------------------------------------------------------------------
 const PREGUNTAS = [ // una lista (corchetes []) de objetos (llaves {}). cada objeto es una pregunta. para agregar otra copio un objeto y le cambio los textos
   { // pregunta 1
     pregunta: '¿Cuáles son los 3 pilares de la sostenibilidad?', // el texto de la pregunta
@@ -162,12 +128,11 @@ const quizBarra = document.querySelector('#quizBarra')     // la barra de avance
 
 let preguntaActual = 0 // en que pregunta voy, empieza en la 0 (la primera). let porque cambia
 let puntos = 0         // los puntos que llevo
-
 const cambiarMascota = (nombre) => { // cambia la imagen de la mascota y la hace saltar
   quizMascota.src = `img/mascota-${nombre}.png` // si nombre es "feliz" queda img/mascota-feliz.png
   quizMascota.classList.remove('saltar') // le quito la clase del brinco...
   void quizMascota.offsetWidth           // ...truquito para que el navegador "se de cuenta" del cambio...
-  quizMascota.classList.add('saltar')    // ...y se la vuelvo a poner, asi brinca cada vez y no solo la primera
+  quizMascota.classList.add('saltar')    // ...y se la vuelvo a poner, asi brinca cada vez
 } // cierro cambiarMascota
 
 const moverBarra = (porcentaje) => { // llena la barra hasta el porcentaje que le diga
@@ -254,29 +219,30 @@ const mostrarResultado = () => { // el puntaje final
   }) // cierro el clic de otra vez
 } // cierro mostrarResultado
 
-
-// ---------------------------------------------------------------------
-// 7. FORMULARIO DE CONTACTO
-// ---------------------------------------------------------------------
 const formContacto = document.querySelector('#formContacto') // el formulario
 const btnEnviar = document.querySelector('#btnEnviar')       // el boton de enviar
 const respuesta = document.querySelector('#respuesta')       // la caja del mensaje con la mascota
 
-const esperar = (ms) => new Promise((resolver) => setTimeout(resolver, ms)) // espera unos milisegundos. por ahora "hace como si" enviara, cuando pongamos la base de datos aqui va el envio de verdad
+const esperar = (ms) => new Promise((resolver) => setTimeout(resolver, ms)) // espera unos milisegundos. por ahora "hace como si" enviara,
+//  cuando pongamos la base de datos aqui va el envio de verdad
 
 const cargando = (activo) => { // pone el boton en modo "Enviando…" con la ruedita, o lo devuelve a normal
   btnEnviar.disabled = activo // si activo es true, bloqueo el boton para que no le den clic dos veces
-  btnEnviar.querySelector('.spinner-border').classList.toggle('d-none', !activo) // la ruedita: si esta activo le QUITO el d-none (se ve), si no se lo pongo. el ! voltea el valor
+  btnEnviar.querySelector('.spinner-border').classList.toggle('d-none', !activo) // la ruedita: si esta activo le QUITO el d-none (se ve), 
+  // si no se lo pongo. el ! voltea el valor
   btnEnviar.querySelector('.btn-texto').textContent = activo ? 'Enviando…' : 'Enviar mensaje' // cambio el texto del boton
 } // cierro cargando
 
 const mostrarRespuesta = (tipo, texto) => { // muestra el mensaje con la mascota feliz (bien) o triste (error)
-  respuesta.className = `respuesta${tipo === 'error' ? ' error' : ''}` // si es error queda "respuesta error" (rosado), si no "respuesta" (verde). al cambiar las clases se quita el d-none y aparece
+  respuesta.className = `respuesta${tipo === 'error' ? ' error' : ''}` // si es error queda "respuesta error" (rosado), si no "respuesta" (verde). 
+  // al cambiar las clases se quita el d-none y aparece
   respuesta.innerHTML = `<img src="img/mascota-${tipo === 'error' ? 'triste' : 'feliz'}.png" alt=""><span></span>` // la mascota y un span vacio para el texto
-  respuesta.querySelector('span').textContent = texto // el texto con textContent y NO innerHTML, por seguridad: si alguien escribe codigo en el nombre, se muestra como texto y no se ejecuta
+  respuesta.querySelector('span').textContent = texto // el texto con textContent y NO innerHTML, por seguridad: si alguien escribe codigo en el nombre, 
+  // se muestra como texto y no se ejecuta
 } // cierro mostrarRespuesta
 
-formContacto.addEventListener('submit', async (evento) => { // 'submit' es el evento de enviar. evento trae la informacion de lo que paso. async porque adentro esperamos
+formContacto.addEventListener('submit', async (evento) => { // 'submit' es el evento de enviar. evento trae la informacion de lo que paso. 
+// async porque adentro esperamos
   evento.preventDefault() // 1. evita lo que hace el formulario normalmente, que es recargar la pagina
   formContacto.classList.add('was-validated') // 2. was-validated es de boots: pinta en rojo los campos mal y en verde los bien
 
@@ -285,19 +251,17 @@ formContacto.addEventListener('submit', async (evento) => { // 'submit' es el ev
     return // y me salgo, no sigo
   } // cierro el if
 
-  const datos = Object.fromEntries(new FormData(formContacto)) // 4. FormData saca lo que escribieron y fromEntries lo vuelve un objeto: { nombre: 'Angie', correo: '...' }
+  const datos = Object.fromEntries(new FormData(formContacto)) // 4. FormData saca lo que escribieron y fromEntries lo vuelve un objeto: 
+  // { nombre: 'Angie', correo: '...' }
 
   cargando(true)       // 5. pongo la ruedita
   await esperar(1000)  // espero 1 segundo (aqui va a ir el envio a la base de datos)
   cargando(false)      // quito la ruedita
 
-  mostrarRespuesta('ok', `¡Gracias, ${datos.nombre.split(' ')[0]}! Te escribiremos pronto.`) // 6. gracias con el primer nombre: split(' ') parte por los espacios y [0] coge el primero
+  mostrarRespuesta('ok', `¡Gracias, ${datos.nombre.split(' ')[0]}! Te escribiremos pronto.`) // 6. gracias con el primer nombre: split(' ') 
+  // parte por los espacios y [0] coge el primero
   formContacto.reset() // limpio el formulario
   formContacto.classList.remove('was-validated') // y le quito los colores rojo y verde
 }) // cierro el envio
 
-
-// ---------------------------------------------------------------------
-// 8. AÑO DEL FOOTER
-// ---------------------------------------------------------------------
 document.querySelector('#anio').textContent = new Date().getFullYear() // new Date() es la fecha de hoy y getFullYear() saca el año, asi en 2027 dice 2027 solito
